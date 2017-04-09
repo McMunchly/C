@@ -1,3 +1,4 @@
+/* find the radius of any sphere */
 #include <stdio.h>
 
 #define FRACTION 4.0f / 3.0f
