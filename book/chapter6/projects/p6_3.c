@@ -1,4 +1,4 @@
-/* reduce a fraction to lowerst terms */
+/* reduce a fraction to lowest terms */
 #include <stdio.h>
 
 int main(void)
