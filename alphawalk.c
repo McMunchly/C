@@ -11,7 +11,7 @@
 int main(void)
 {
     char alpha = 'A', board[SIZE * SIZE];
-    int i, j, direction, current = 0;
+    int i, j, direction, coord = 0;
     bool walk = false, choices[4] = {false};
     
     srand((unsigned) time(NULL));
@@ -20,12 +20,11 @@ int main(void)
     for(i = 0; i < SIZE * SIZE; i++)
         board[i] = '.';
     
-    board[current] = alpha;
+    board[coord] = alpha;
     
     for(i = 0; i < ALPHABET; i++)
     {
         walk = false;
-        direction = 0;
         
         for(j = 0; j < DIRECTIONS; j++)
             choices[j] = false;
@@ -37,10 +36,10 @@ int main(void)
             switch(direction)
             {
                 case 0:
-                    if(current - SIZE >= 0 && board[current - SIZE] == '.')
+                    if(coord - SIZE >= 0 && board[coord - SIZE] == '.')
                     {
-                        current -= SIZE;
-                        board[current] = ++alpha;
+                        coord -= SIZE;
+                        board[coord] = ++alpha;
                         walk = true;
                     }
                     else
@@ -48,10 +47,10 @@ int main(void)
 
                     break;
                 case 1:
-                    if(current + 1 <= SIZE * SIZE && (current + 1) % 10 != 0 && board[current + 1] == '.')
+                    if(coord + 1 <= SIZE * SIZE && (coord + 1) % 10 != 0 && board[coord + 1] == '.')
                     {
-                        current += 1;
-                        board[current] = ++alpha;
+                        coord += 1;
+                        board[coord] = ++alpha;
                         walk = true;
                     }
                     else
@@ -60,10 +59,10 @@ int main(void)
                     break;
                         
                 case 2:
-                    if(current + SIZE < SIZE * SIZE && board[current + SIZE] == '.')
+                    if(coord + SIZE < SIZE * SIZE && board[coord + SIZE] == '.')
                     {
-                        current += SIZE;
-                        board[current] = ++alpha;
+                        coord += SIZE;
+                        board[coord] = ++alpha;
                         walk = true;
                     }
                     else
@@ -71,10 +70,10 @@ int main(void)
 
                     break;
                  case 3:
-                    if(current - 1 <= SIZE * SIZE && current % 10 != 0 && board[current - 1] == '.')
+                    if(coord - 1 <= SIZE * SIZE && coord % 10 != 0 && board[coord - 1] == '.')
                     {
-                        current -= 1;
-                        board[current] = ++alpha;
+                        coord -= 1;
+                        board[coord] = ++alpha;
                         walk = true;
                     }
                     else
