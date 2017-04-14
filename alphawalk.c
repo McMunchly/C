@@ -18,9 +18,7 @@ int main(void)
        
     /* fill the board with '.' */ 
     for(i = 0; i < SIZE * SIZE; i++)
-    {
         board[i] = '.';
-    }
     
     board[current] = alpha;
     
@@ -101,12 +99,9 @@ int main(void)
 
     /* print the final result board */
     for(i = 0; i < SIZE * SIZE; i++)
-    {
-        
+    { 
         if(i != 0 && i % 10 == 0)
-        {
             printf("\n");
-        }
             
         printf("%c ", board[i]);
 
