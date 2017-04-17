@@ -49,6 +49,7 @@ int roll_dice(void)
     
     rand1 = (rand() % 6) + 1;
     rand2 = (rand() % 6) + 1;
+    
     return rand1 + rand2;
 }
 
