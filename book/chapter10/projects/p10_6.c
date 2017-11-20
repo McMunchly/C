@@ -27,6 +27,8 @@ int main(void)
 	while(quit != true) {
 		stop = false;
 		printf("Enter an RPN expression: ");
+		
+		/* scan until the proper command is inputted */
 		while(stop == false) {
 			scanf(" %c", &ch);
 			
@@ -35,29 +37,19 @@ int main(void)
 				case '6': case '7': case '8': case '9': case 10:
 					push(ch - 48);
 					break;
-				case '+':
+				case '+': case '-': case '*': case '/':
 					op2 = pop();
 					op1 = pop();
 				
-					push(op1 + op2);
-					break;
-				case '-':
-					op2 = pop();
-					op1 = pop();
-				
-					push(op1 - op2);
-					break;
-				case '*':
-					op2 = pop();
-					op1 = pop();
-				
-					push(op1 * op2);
-					break;
-				case '/':
-					op2 = pop();
-					op1 = pop();
-				
-					push(op1 / op2);
+					if(ch == '+') {
+						push(op1 + op2);
+					} else if(ch == '-') {
+						push(op1 - op2);
+					} else if(ch == '*') {
+						push(op1 * op2);
+					} else {
+						push(op1 / op2);
+					}
 					break;
 				case 'q':
 					return 0;
@@ -71,6 +63,7 @@ int main(void)
 					return 0;
 			}
 			
+			/* if overflow or underflow errors are flagged */
 			if(overflow == true) {
 				printf("Expression is too complex\n");
 				return 0;
