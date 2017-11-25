@@ -8,40 +8,63 @@
 int main(void)
 {
 	char sentence[MAX_LENGTH][WORD_LENGTH + 1];
-	char ch = ' ', *p;
+	char ch = ' ', *p, *p2;
     int i, j;
     
     printf("Enter a sentence: ");
 
     for(i = 0; i < MAX_LENGTH; i++) {
-        p = sentence[i];
+        p = p2 = sentence[i];
         
-        for(j = 0; j < WORD_LENGTH; j++) {
-        	sentence[i][j] = getchar();
-        	
-        	if(sentence[i][j] == '.' || sentence[i][j] == '?' || sentence[i][j] == '!') {
-        		ch = sentence[i][j];
-        		break;
-        	}
-        	if(sentence[i][j] == ' ' || sentence[i][j] == '\n') {
-        		break;
-        	}
+        /* check if the word is buffered by whitespace */
+        *p2 = getchar();
+        while(*p2 == ' ' || *p2 == '\t') {
+        	p2++;
+        	*p2 = getchar();
         }
         
-        if(sentence[i][j] == '\n') {
-			sentence[i][j] = '\0';
+        /* assign the first letter */
+		*p = *p2;
+		
+		/* check for newline */
+		if(*p == '\n') {
+		    *p = '\0'; 
         	break;
         }
         
-		sentence[i][j] = '\0';
+        p++;
         
+        /* fill out the rest of the word */
+        for(j = 0; j < WORD_LENGTH; j++, p++) {
+			*p = getchar();
+        	        	
+        	/* record the ending punctuation */
+        	if(*p == '.' || *p == '?' || *p == '!') {
+        		ch = *p;
+        		break;
+        	}
+        	
+        	/* exit the word if a space or newline is found */
+        	if(*p == ' ' || *p == '\n' || *p == '\t') {
+        		break;
+        	}
+        }
+        
+        if(*p == '\n') {
+			*p = '\0';
+        	break;
+        }
+        
+		*p = '\0';
     }
 
     printf("Reversal of sentence:");
     
     for(; i >= 0; i--) {
     	p = sentence[i];
-        printf(" %s", p);
+    	if(*p != '\0') {
+        	printf(" %s", p);
+        }
     }
     
     printf("%c\n", ch);
