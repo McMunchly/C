@@ -1,1 +1,0 @@
-Enter first word: Enter second word: The words are not anagrams
