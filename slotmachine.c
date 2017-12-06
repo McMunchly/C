@@ -17,7 +17,7 @@ int main(void) {
 	srand(time(0));
 		
  	while(ch != 'q') {
- 		/* this won't be entered the first time because the user hasn't input yet */
+ 		/* won't be entered the first time because the user hasn't input anything yet */
 		if(ch == 's') {
 			if(credits >= 10) {
 				credits -= 10;
