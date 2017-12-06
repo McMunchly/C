@@ -7,33 +7,31 @@
 int roll_dice(void);
 bool play_game(void);
 
-int main(void)
-{
+int main(void) {
     char input, wins = 0, losses = 0;
     bool play = true, result;
        
-    srand((unsigned) time(NULL));
+    srand(time(0));
         
     printf("Welcome to craps!\n");
      
-    while(play)
-    {
+    while(play) {
         result = play_game();
          
-        if(result == true)
+        if(result == true) {
             wins++;
-        else
+        } else {
             losses++;
+        }
                    
         printf("\nPlay again? ");
         input = getchar();
     
-        if(input == 'y')
-        {
+        if(input == 'y') {
             play = true;
-        }
-        else
+        } else {
             play = false;
+        }
             
         scanf("%c", &input);
     }
@@ -43,8 +41,7 @@ int main(void)
     return 0;
 }
 
-int roll_dice(void)
-{
+int roll_dice(void) {
     int rand1, rand2;
     
     rand1 = (rand() % 6) + 1;
@@ -52,16 +49,14 @@ int roll_dice(void)
     return rand1 + rand2;
 }
 
-bool play_game(void)
-{
+bool play_game(void) {
     int result = roll_dice(), point;
     bool game = true;
     
     printf("\nYou rolled: %d\n", result);
         
     /* first roll */
-    switch(result)
-    {
+    switch(result) {
         case 7: case 11:
             printf("You win!\n");
             return true;
@@ -75,19 +70,15 @@ bool play_game(void)
     }
     
     /* roll until the players rolls a 7 or rolls the point */
-    while(game)
-    {
+    while(game) {
         result = roll_dice();
         
         printf("You rolled: %d\n", result);
         
-        if(result == point)
-        {
+        if(result == point) {
             printf("You win!\n");
             return true;
-        }
-        else if(result == 7)
-        {
+        } else if(result == 7) {
             printf("You lose!\n");
             break;
         }

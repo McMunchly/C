@@ -1,17 +1,15 @@
 /* creates a magic square */
 #include <stdio.h>
 
-int main(void)
-{
-    int size, i, j, row, col, oldrow, oldcol, sum;
+int main(void) {
+    int size, i, j, row, col, oldrow, oldcol, sum = 0;
     
     printf("This program creates a magic square of a specified size.\n");
     printf("The size must be an odd number between 1 and 99.\n");
     printf("Enter size of magic square: ");
     scanf("%d", &size);
     
-    if(size % 2 == 0 || size > 99 || size < 1)
-    {
+    if(size % 2 == 0 || size > 99 || size < 1) {
         printf("Invalid number\n");
         return 0;
     }
@@ -20,10 +18,10 @@ int main(void)
     int square[size][size];
     
     /* fill square with all 0's */
-    for(i = 0; i < size; i++)
-    {
-        for(j = 0; j < size; j++)
+    for(i = 0; i < size; i++) {
+        for(j = 0; j < size; j++) {
             square[i][j] = 0;
+        }
     }
     
     /* put 1 at the first row, middle column */
@@ -33,8 +31,7 @@ int main(void)
     
     
     /* fill the magic square */
-    for(i = 2; i <= size * size; i++)
-    {
+    for(i = 2; i <= size * size; i++) {
         /* store old coordinates in case an occupied space is found */
         oldrow = row;
         oldcol = col;
@@ -43,15 +40,16 @@ int main(void)
         row -= 1;
         col += 1;
         
-        if(row < 0)
+        if(row < 0) {
             row = size - 1;
+        }
             
-        if(col == size)
+        if(col == size) {
             col = 0;
+        }
         
         /* if space is occupied, then go to old space up a row */
-        if(square[row][col] != 0)
-        {
+        if(square[row][col] != 0) {
             row = oldrow + 1;
             col = oldcol;
             
@@ -63,22 +61,19 @@ int main(void)
     }
     
     /* print the square */
-    for(i = 0; i < size; i++)
-    {
-        for(j = 0; j < size; j++)
+    for(i = 0; i < size; i++) {
+        for(j = 0; j < size; j++) {
             printf("%4d ", square[i][j]);
+        }
             
         printf("\n");
     }
-    
 
     printf("Row sums: ");
     
     /* find the sum of the first row - that's all rows and columns */
-    for(i = 0; i < size; i++)
-    {
-        sum += square[0][i];
-            
+    for(i = 0; i < size; i++) {
+        sum += square[0][i];    
     }
     
     printf("%-10d\nCol sums: %-10d", sum, sum);
