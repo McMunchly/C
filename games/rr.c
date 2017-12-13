@@ -11,7 +11,7 @@ int main(void) {
 	
 	srand(time(0));
 		
-	/* intro text and instructions */
+	/* intro text and instructions		*/
 	printf("---------Welcome to Russian Roulette----------\n");
 	printf("Put in a bullet, spin the chamber, and fire.\n");
 	printf("-----\n\n");

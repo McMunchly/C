@@ -13,17 +13,17 @@ int RandomInt(int low, int high);
 int main(void) {
 
 	int a, b, c, credits = 100;
-	char ch = 'a'; /* set this so the while loop will always be entered */
+	char ch;
 	
 	/* seed the pseudo-random generator */
 	srand(time(0));
 		
-	/* intro text and instructions */
+	/* intro text and instructions 		*/
 	printf("-----------Welcome to Slots!!----------\n");
 	printf("Try your luck at a slot machine!\n");
 	printf("-----\n");
 	
- 	while(ch != 'q') {
+ 	for(;;) {
  		/* won't be entered the first time because the user hasn't input anything yet */
 		if(ch == 's') {
 			if(credits >= 10) {
@@ -56,6 +56,10 @@ int main(void) {
 		printf("\nYour credits: %d\n", credits);
 		printf("Press 's' to spin the slots (%d credits), press 'q' to quit: ", COST);
 		scanf(" %c", &ch);
+		
+		if(ch == 'q') {
+			break;
+		}
 	}
     
 	return 0;
