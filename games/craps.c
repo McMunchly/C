@@ -1,36 +1,39 @@
-/* play craps */
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <time.h>
+/* play craps 								*/
+
+#include <stdio.h>		/* printf, scanf	*/
+#include <stdbool.h>	/* bool				*/
+#include <stdlib.h>		/* rand, srand		*/
+#include <time.h>		/* time				*/
 
 int roll_dice(void);
 bool play_game(void);
 
 int main(void) {
-    char input, wins = 0, losses = 0;
-    bool play = true, result;
+    char input;
+    int wins = 0, losses = 0;
        
     srand(time(0));
         
-    printf("Welcome to craps!\n");
+	/* intro text and instructions */
+	printf("\n----------Welcome to Craps!!----------\n");
+	printf("Each game starts by rolling 2 dice.\n");
+	printf("7 or 11 wins, 2, 3, and 12 lose\n");
+	printf("Anything else is the point\n");
+	printf("Roll until you roll the point (win!) or roll a 7 (lose).\n");
+	printf("-----\n\n");
      
-    while(play) {
-        result = play_game();
-         
-        if(result == true) {
+    for(;;) {
+        if(play_game() == true) {
             wins++;
         } else {
             losses++;
         }
                    
-        printf("\nPlay again? ");
+        printf("\nPlay again? (y/n): ");
         input = getchar();
     
-        if(input == 'y') {
-            play = true;
-        } else {
-            play = false;
+        if(input != 'y') {
+            break;
         }
             
         scanf("%c", &input);
@@ -42,16 +45,11 @@ int main(void) {
 }
 
 int roll_dice(void) {
-    int rand1, rand2;
-    
-    rand1 = (rand() % 6) + 1;
-    rand2 = (rand() % 6) + 1;
-    return rand1 + rand2;
+	return ((rand() % 6) + 1) + ((rand() % 6) + 1);
 }
 
 bool play_game(void) {
-    int result = roll_dice(), point;
-    bool game = true;
+    int point, result = roll_dice();
     
     printf("\nYou rolled: %d\n", result);
         
@@ -70,7 +68,7 @@ bool play_game(void) {
     }
     
     /* roll until the players rolls a 7 or rolls the point */
-    while(game) {
+    for(;;) {
         result = roll_dice();
         
         printf("You rolled: %d\n", result);

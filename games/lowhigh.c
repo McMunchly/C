@@ -20,6 +20,7 @@ int main(void) {
 	printf("Try to guess if the actual number is lower, higher, or correct.\n");
 	printf("Enter 'q' to quit.\n");
 	printf("-----\n\n");
+	
 	for(;;) {
 		if(credits < 10) {
 			printf("Out of credits. Game Over.\n");
