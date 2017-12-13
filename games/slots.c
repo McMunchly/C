@@ -1,3 +1,5 @@
+/* bet on a simple slot machine			*/
+
 #include <stdio.h>	/* printf, scanf 	*/
 #include <stdlib.h>	/* rand, srand 		*/
 #include <time.h>	/* time 			*/
@@ -16,6 +18,11 @@ int main(void) {
 	/* seed the pseudo-random generator */
 	srand(time(0));
 		
+	/* intro text and instructions */
+	printf("-----------Welcome to Slots!!----------\n");
+	printf("Try your luck at a slot machine!\n");
+	printf("-----\n");
+	
  	while(ch != 'q') {
  		/* won't be entered the first time because the user hasn't input anything yet */
 		if(ch == 's') {

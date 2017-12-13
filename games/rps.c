@@ -1,8 +1,8 @@
-/* rock-papers-scissors game */
+/* rock-papers-scissors game 			*/
 
-#include <stdio.h>	/* printf, scanf */
-#include <stdlib.h> 
-#include <time.h>
+#include <stdio.h>	/* printf, scanf	*/
+#include <stdlib.h> /* rand, srand 		*/
+#include <time.h>	/* time 			*/
 
 int main(void) {
 	
@@ -17,8 +17,9 @@ int main(void) {
 	
 	srand(time(0));
 		
-	printf("Welcome to rock-papers-scissors!!\n\n");
-	
+	/* intro text and instructions */
+	printf("---------Welcome to Rock-Papers-Sissors!!----------\n");
+	printf("-----\n\n");
 	for(;;) {
 		printf("Choose your hand (r/p/s), enter q to quit: ");
 		scanf(" %c", &hand);
@@ -64,6 +65,6 @@ int main(void) {
 		}
 	}
 	
-	printf("Your record is %d/%d/%d\n", rec.wins, rec.losses, rec.draws);
+	printf("Your record is W-%d/L-%d/D-%d\n", rec.wins, rec.losses, rec.draws);
 	return 0;
 }
