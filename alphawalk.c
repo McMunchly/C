@@ -45,7 +45,7 @@ int main(void) {
 
                     break;
                 case 1:
-                    if(coord + 1 <= SIZE * SIZE && (coord + 1) % 10 != 0 && board[coord + 1] == '.') {
+                    if(coord + 1 <= SIZE * SIZE && (coord + 1) % SIZE != 0 && board[coord + 1] == '.') {
                         coord += 1;
                         board[coord] = ++alpha;
                         walk = true;
@@ -56,7 +56,7 @@ int main(void) {
                     break;
                         
                 case 2:
-                    if(coord + SIZE < SIZE * SIZE && board[coord + SIZE] == '.') {
+                    if(coord + SIZE <= SIZE * SIZE && board[coord + SIZE] == '.') {
                         coord += SIZE;
                         board[coord] = ++alpha;
                         walk = true;
@@ -66,7 +66,7 @@ int main(void) {
 
                     break;
                  case 3:
-                    if(coord - 1 <= SIZE * SIZE && coord % 10 != 0 && board[coord - 1] == '.') {
+                    if(coord - 1 >= 0 && coord % SIZE != 0 && board[coord - 1] == '.') {
                         coord -= 1;
                         board[coord] = ++alpha;
                         walk = true;
