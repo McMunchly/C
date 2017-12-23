@@ -1,4 +1,4 @@
-/* conrad's game of life */
+/* conway's game of life */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,12 +15,12 @@ void print_board(char board[]);
 
 int main(void) {
     char ch, board[SIZE * SIZE];
-    int i, row, col, neighbors, neighbor_count[SIZE * SIZE];
+    int i, row, col, gen = 1, neighbors, neighbor_count[SIZE * SIZE];
     
     fill_board(board, DEAD);
     /* seed the random number generator */
     srand(time(0));
-/*
+	/*
     board[10 + SIZE * 7] = ALIVE;
     board[11 + SIZE * 7] = ALIVE;
     board[12 + SIZE * 7] = ALIVE;
@@ -50,6 +50,7 @@ int main(void) {
     /* main loop */
     for(;;) {
     	print_board(board);
+    	printf("Generation %d\n", gen);
 		printf("Enter command (h for help): ");
 		scanf(" %c", &ch);
 		
@@ -64,7 +65,7 @@ int main(void) {
 					"q = quit game\n");
 			continue;
 		} else if(ch == 'n') {
-			;/* proceed to cell check */
+			gen++;
 		} else if(ch == 'q') {
 			break;
 		} else if(ch == RANDOM) {
@@ -168,9 +169,10 @@ int main(void) {
     return 0;
 }
 
+/* fills the board based on the given parameter */
 void fill_board(char board[], char type) {
 	int i;
-	/* fill the board with '.' */ 
+	
     for(i = 0; i < SIZE * SIZE; i++) {
     	switch(type) {
 			case DEAD:
@@ -190,10 +192,11 @@ void fill_board(char board[], char type) {
     }
 }
 
+/* print the final result board */
 void print_board(char board[]) {
 	int i;
 	printf("\n");
-    /* print the final result board */
+
     for(i = 0; i < SIZE * SIZE; i++) { 
         if(i != 0 && i % SIZE == 0) {
             printf("\n");
