@@ -89,7 +89,11 @@ int main(void) {
     	}
     	
     	if(states[row][col] == 1) {
-    		states[row][col] = 0;
+    		if(board[row][col] == HIT) {
+    			printf("Coordinates have already been hit.\n");
+    			continue;
+    		}
+    		
     		board[row][col] = HIT;
     		printf("HIT!!!\n");
     		total--;
